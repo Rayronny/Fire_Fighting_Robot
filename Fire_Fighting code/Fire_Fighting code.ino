@@ -1,13 +1,21 @@
-#define CUSTOM_SETTINGS
-#define INCLUDE_GAMEPAD_MODULE
+/*
+Connections to be made 05/04/23
+Left Motors : Motor 1 d25 and d26
+              Motor 2 d27 and d14
+Right Motors : Motor 1 d18 and d19 
+               Motor 2 d21 and d22 
+Tatenda Bako,Lawrence Takaendesa,Emmanuel Damba, Raymond Nyakudanga 
+*/
+#include <WiFi.h>
+#include <WiFiClient.h>  // to be able to connect to connect to hotspot
+#include <WebServer.h>   // to make a server in arduino
+#include <HTTPClient.h>  // to be abkle to make https requests to and from client (POST, GET, PUT, DELETE)
 #include <DabbleESP32.h>
-
-#include <Arduino.h>
 
 #define RightFrontFWD 18
 #define RightFrontBWD 19
-#define RightBackFWD 25
-#define RightBackBWD 26
+#define RightBackFWD 21
+#define RightBackBWD 22
 
 #define LeftFrontFWD 25
 #define LeftFrontBWD 26
@@ -25,7 +33,7 @@ void setup() {
   pinMode(LeftBackBWD, OUTPUT);
   // put your setup code here, to run once:
   Serial.begin(115200);      // make sure your Serial Monitor is also set at this baud rate.
-  Dabble.begin("MyEsp32");       //set bluetooth name of your device
+  Dabble.begin("Fire-Fighter-ESP32");       //set bluetooth name of your device
 }
 
 void loop() {
@@ -204,3 +212,4 @@ void stopMoving() {
   digitalWrite(LeftBackFWD, LOW);
   digitalWrite(LeftBackBWD, LOW);
 }
+  
